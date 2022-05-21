@@ -6,8 +6,6 @@ from config import PollData
 from config import atlaspoll
 import asyncio
 import discord
-from discord.ext import commands
-import random
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///C:\\sqlite\\library.db'
@@ -30,7 +28,7 @@ async def on_message(message):
         db.session.commit()
         channel = message.channel
         print(PollData.query.all())
-        # This will query the count, we will need this. We just need a way to prohibit by id.
+        # This will query the count, we will need this. We just need a way to prohibit by 
         # print(PollData.query.filter_by(option='Albion').count())
         await channel.send('Vote Received!')
     elif message.content.startswith('!Hibernia'):
