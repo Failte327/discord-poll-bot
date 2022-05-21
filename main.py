@@ -23,11 +23,15 @@ emb.add_field(name = 'Midgard', value='\n', inline=False)
 async def on_message(message):
     if message.content.startswith('!Albion'):
         print ('Albion Vote Received')
-        albionVote = PollData(option='Albion', poll=atlaspoll, user_id=message.author.id)
+        userid = message.author.id
+        print(PollData.query.filter_by(option='Albion').count())
+        albionVote = PollData(option='Albion', poll=atlaspoll, user_id=userid)
         db.session.add(albionVote)
         db.session.commit()
         channel = message.channel
         print(PollData.query.all())
+        # This will query the count, we will need this. We just need a way to prohibit by id.
+        # print(PollData.query.filter_by(option='Albion').count())
         await channel.send('Vote Received!')
     elif message.content.startswith('!Hibernia'):
         print ('Hibernia Vote Received')
