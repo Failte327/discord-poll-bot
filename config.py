@@ -34,13 +34,13 @@ db.create_all()
 
 atlaspoll = Poll(name='What realm will you play on Atlas Launch')
 
-option = PollData(option='Albion', poll=atlaspoll, user_id=1)
-option = PollData(option='Hibernia', poll=atlaspoll, user_id=1)
-option = PollData(option='Midgard', poll=atlaspoll, user_id=1)
+# option = PollData(option='Albion', poll=atlaspoll, user_id=1)
+# option = PollData(option='Hibernia', poll=atlaspoll, user_id=1)
+# option = PollData(option='Midgard', poll=atlaspoll, user_id=1)
 
-db.session.add(atlaspoll)
-db.session.add(option)
+# db.session.add(atlaspoll)
+# db.session.add(option)
 
-db.session.commit()
+# db.session.commit()
 
 print(PollData.query.all())

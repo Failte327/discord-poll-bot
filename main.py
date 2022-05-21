@@ -10,7 +10,6 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///C:\\sqlite\\library.db'
 
 client = discord.Client()
-
 @client.event
 async def vote(message):
     if message.content.startswith('!Albion'):
@@ -26,3 +25,6 @@ async def vote(message):
         await db.session.add(hiberniaVote)
         db.session.commit()
 
+print(PollData.query.all())
+
+client.run('OTc3NDI2NDUwOTQyNjgxMTM4.GQ630h.mCVm7Nzn9Z8L-6yqEx0fm5dB_YnniXzKnKE3D8')
