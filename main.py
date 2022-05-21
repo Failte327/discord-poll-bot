@@ -1,45 +1,28 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from config import db
+from config import Poll
+from config import PollData
+from config import atlaspoll
 import discord
 
-
-client = discord.Client()
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///C:\\sqlite\\library.db'
 
-db = SQLAlchemy(app)
-db.init_app(app)
+client = discord.Client()
 
-class Poll(db.Model):
-    # Initialize the Column
-    id = db.Column(db.Integer, nullable=False, primary_key=True)
-    name = db.Column(db.String(100), nullable=False)
+@client.event
+async def vote(message):
+    if message.content.startswith('!Albion'):
+        albionVote = PollData(option='Albion', poll=atlaspoll, user_id=message.author.id)
+        await db.session.add(albionVote)
+        db.session.commit()
+    elif message.content.startswith('!Hibernia'):
+        hiberniaVote = PollData(option='Hibernia', poll=atlaspoll, user_id=message.author.id)
+        await db.session.add(hiberniaVote)
+        db.session.commit()
+    elif message.content.startswith('!Midgard'):
+        midgardVote = PollData(option='Midgard', poll=atlaspoll, user_id=message.author.id)
+        await db.session.add(hiberniaVote)
+        db.session.commit()
 
-    # For displaying our database record rather than just numbers
-    def __repr__(self):
-        return '<Poll %r>' % self.name
-
-class VotingOption(db.Model):
-    # Initialize the Column
-    id = db.Column(db.Integer, nullable=False, primary_key=True)
-    poll_id = db.Column(db.Integer, db.ForeignKey('poll.id'), nullable=False)
-    option = db.Column(db.String(100), nullable=False)
-
-    # Initialize the relationship
-    poll = db.relationship('Poll', backref=db.backref('votingoptions', lazy=True))
-
-    # For displaying our database record rather than just numbers
-    def __repr__(self):
-        return '<Option %r>' % self.option
-
-atlaspoll = Poll(name='Atlas Launch Realm')
-option = VotingOption(option='Midgard', poll=atlaspoll)
-option = VotingOption(option='Hibernia', poll=atlaspoll)
-option = VotingOption(option='Albion', poll=atlaspoll)
-
-db.session.add(atlaspoll)
-db.session.add(option)
-
-db.session.commit()
-
-print(VotingOption.query.all())
