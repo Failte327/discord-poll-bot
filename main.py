@@ -16,7 +16,8 @@ client = discord.Client()
 async def on_message(message):
     if message.content.startswith('!Albion'):
         print ('Albion Vote Received')
-        userid = message.author.id
+        print(message.author.id)
+        userid = str.join(message.author.id)
         albionVote = PollData(option='Albion', poll=atlaspoll, user_id=userid)
         db.session.add(albionVote)
         db.session.commit()

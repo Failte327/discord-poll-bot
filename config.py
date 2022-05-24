@@ -28,11 +28,12 @@ class PollData(db.Model):
 
     # For displaying our database record rather than just numbers
     def __repr__(self):
-        return '<Option %r>' % self.option
+        return '<Option %r>' % self.option, '<User ID %r>' % self.user_id
 
 db.create_all()
 
-atlaspoll = Poll(name='What realm will you play on Atlas Launch')
+atlaspoll = Poll(name='Atlas Launch Numbers')
+db.session.commit()
 
 # option = PollData(option='Albion', poll=atlaspoll, user_id=1)
 # option = PollData(option='Hibernia', poll=atlaspoll, user_id=1)
