@@ -15,7 +15,7 @@ client = discord.Client()
 @client.event
 async def on_message(message):
     channel = message.channel
-    if message.content.startswith('!Albion') and channel.id == 977430615894933526:
+    if message.content.startswith('!Albion') and channel.id == 978736628082286633:
         print ('Albion Vote Received')
         albionVote = PollData(option='Albion', poll=atlaspoll)
         db.session.add(albionVote)
@@ -28,12 +28,14 @@ async def on_message(message):
         chart.add_field(name = 'Albion', value=voteCountAlb, inline=False)
         chart.add_field(name = 'Hibernia', value=voteCountHib, inline=False)
         chart.add_field(name = 'Midgard', value=voteCountMid, inline=False)
+        async for message in channel.history(limit=4000):
+            await message.delete()
         overwrite = discord.PermissionOverwrite()
         overwrite.send_messages = False
         overwrite.read_messages = True
         await channel.set_permissions(message.author, overwrite=overwrite)
         await channel.send(embed = chart)
-    elif message.content.startswith('!Hibernia') and channel.id == 977430615894933526:
+    elif message.content.startswith('!Hibernia') and channel.id == 978736628082286633:
         print ('Hibernia Vote Received')
         hiberniaVote = PollData(option='Hibernia', poll=atlaspoll)
         db.session.add(hiberniaVote)
@@ -47,12 +49,14 @@ async def on_message(message):
         chart.add_field(name = 'Albion', value=voteCountAlb, inline=False)
         chart.add_field(name = 'Hibernia', value=voteCountHib, inline=False)
         chart.add_field(name = 'Midgard', value=voteCountMid, inline=False)
+        async for message in channel.history(limit=4000):
+            await message.delete()
         overwrite = discord.PermissionOverwrite()
         overwrite.send_messages = False
         overwrite.read_messages = True
         await channel.set_permissions(message.author, overwrite=overwrite)
         await channel.send(embed = chart)
-    elif message.content.startswith('!Midgard') and channel.id == 977430615894933526:
+    elif message.content.startswith('!Midgard') and channel.id == 978736628082286633:
         print ('Midgard Vote Received')
         midgardVote = PollData(option='Midgard', poll=atlaspoll)
         db.session.add(midgardVote)
@@ -66,6 +70,8 @@ async def on_message(message):
         chart.add_field(name = 'Albion', value=voteCountAlb, inline=False)
         chart.add_field(name = 'Hibernia', value=voteCountHib, inline=False)
         chart.add_field(name = 'Midgard', value=voteCountMid, inline=False)
+        async for message in channel.history(limit=4000):
+            await message.delete()
         overwrite = discord.PermissionOverwrite()
         overwrite.send_messages = False
         overwrite.read_messages = True
