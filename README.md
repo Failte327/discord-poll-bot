@@ -16,3 +16,5 @@ If you need to restart the bot, just run python3 main.py again, no need to run c
 
 
 This bot will lock the user out of the channel after they vote in order to prevent re-casting votes. It's the only way that I was able to accomplish this, because I was unable to store the user id reliably.
+
+**Make sure that you replace the number after channel.id == in the if statements to the channel you want to use it in**
