@@ -13,3 +13,6 @@ Instructions for running the code:
       python3 main.py (leave this running, the bot will wait for input)
 
 If you need to restart the bot, just run python3 main.py again, no need to run config.py again after initial db creation.
+
+
+This bot will lock the user out of the channel after they vote in order to prevent re-casting votes. It's the only way that I was able to accomplish this, because I was unable to store the user id reliably.
