@@ -14,9 +14,9 @@ client = discord.Client()
 
 @client.event
 async def on_message(message):
-    if message.content.startswith('!Albion'):
+    channel = message.channel
+    if message.content.startswith('!Albion') and channel.id == 977430615894933526:
         print ('Albion Vote Received')
-        channel = message.channel
         albionVote = PollData(option='Albion', poll=atlaspoll)
         db.session.add(albionVote)
         db.session.commit()
@@ -33,7 +33,7 @@ async def on_message(message):
         overwrite.read_messages = True
         await channel.set_permissions(message.author, overwrite=overwrite)
         await channel.send(embed = chart)
-    elif message.content.startswith('!Hibernia'):
+    elif message.content.startswith('!Hibernia') and channel.id == 977430615894933526:
         print ('Hibernia Vote Received')
         hiberniaVote = PollData(option='Hibernia', poll=atlaspoll)
         db.session.add(hiberniaVote)
@@ -52,7 +52,7 @@ async def on_message(message):
         overwrite.read_messages = True
         await channel.set_permissions(message.author, overwrite=overwrite)
         await channel.send(embed = chart)
-    elif message.content.startswith('!Midgard'):
+    elif message.content.startswith('!Midgard') and channel.id == 977430615894933526:
         print ('Midgard Vote Received')
         midgardVote = PollData(option='Midgard', poll=atlaspoll)
         db.session.add(midgardVote)
