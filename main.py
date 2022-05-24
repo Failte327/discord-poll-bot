@@ -20,7 +20,6 @@ async def on_message(message):
         albionVote = PollData(option='Albion', poll=atlaspoll)
         db.session.add(albionVote)
         db.session.commit()
-        channel = message.channel
         print(PollData.query.all())
         voteCountAlb = PollData.query.filter_by(option='Albion').count()
         voteCountHib = PollData.query.filter_by(option='Hibernia').count()
