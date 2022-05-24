@@ -28,6 +28,10 @@ async def on_message(message):
         chart.add_field(name = 'Albion', value=voteCountAlb, inline=False)
         chart.add_field(name = 'Hibernia', value=voteCountHib, inline=False)
         chart.add_field(name = 'Midgard', value=voteCountMid, inline=False)
+        overwrite = discord.PermissionOverwrite()
+        overwrite.send_messages = False
+        overwrite.read_messages = True
+        await channel.set_permissions(message.author, overwrite=overwrite)
         await channel.send(embed = chart)
     elif message.content.startswith('!Hibernia'):
         print ('Hibernia Vote Received')
@@ -43,6 +47,10 @@ async def on_message(message):
         chart.add_field(name = 'Albion', value=voteCountAlb, inline=False)
         chart.add_field(name = 'Hibernia', value=voteCountHib, inline=False)
         chart.add_field(name = 'Midgard', value=voteCountMid, inline=False)
+        overwrite = discord.PermissionOverwrite()
+        overwrite.send_messages = False
+        overwrite.read_messages = True
+        await channel.set_permissions(message.author, overwrite=overwrite)
         await channel.send(embed = chart)
     elif message.content.startswith('!Midgard'):
         print ('Midgard Vote Received')
@@ -58,6 +66,10 @@ async def on_message(message):
         chart.add_field(name = 'Albion', value=voteCountAlb, inline=False)
         chart.add_field(name = 'Hibernia', value=voteCountHib, inline=False)
         chart.add_field(name = 'Midgard', value=voteCountMid, inline=False)
+        overwrite = discord.PermissionOverwrite()
+        overwrite.send_messages = False
+        overwrite.read_messages = True
+        await channel.set_permissions(message.author, overwrite=overwrite)
         await channel.send(embed = chart)
 
 client.run('OTc3NDI2NDUwOTQyNjgxMTM4.GQ630h.mCVm7Nzn9Z8L-6yqEx0fm5dB_YnniXzKnKE3D8')
