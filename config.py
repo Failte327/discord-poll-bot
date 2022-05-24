@@ -21,14 +21,13 @@ class PollData(db.Model):
     id = db.Column(db.Integer, nullable=False, primary_key=True)
     poll_id = db.Column(db.Integer, db.ForeignKey('poll.id'), nullable=False)
     option = db.Column(db.String(100), nullable=False)
-    user_id = db.Column(db.String(100), nullable=False)
 
     # Initialize the relationship
     poll = db.relationship('Poll', backref=db.backref('polldata', lazy=True))
 
     # For displaying our database record rather than just numbers
     def __repr__(self):
-        return '<Option %r>' % self.option, '<User ID %r>' % self.user_id
+        return '<Option %r>' % self.option
 
 db.create_all()
 

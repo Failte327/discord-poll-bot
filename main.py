@@ -16,9 +16,8 @@ client = discord.Client()
 async def on_message(message):
     if message.content.startswith('!Albion'):
         print ('Albion Vote Received')
-        print(message.author.id)
-        userid = str.join(message.author.id)
-        albionVote = PollData(option='Albion', poll=atlaspoll, user_id=userid)
+        channel = message.channel
+        albionVote = PollData(option='Albion', poll=atlaspoll)
         db.session.add(albionVote)
         db.session.commit()
         channel = message.channel
@@ -33,8 +32,7 @@ async def on_message(message):
         await channel.send(embed = chart)
     elif message.content.startswith('!Hibernia'):
         print ('Hibernia Vote Received')
-        userid = message.author.id
-        hiberniaVote = PollData(option='Hibernia', poll=atlaspoll, user_id=userid)
+        hiberniaVote = PollData(option='Hibernia', poll=atlaspoll)
         db.session.add(hiberniaVote)
         db.session.commit()
         channel = message.channel
@@ -49,8 +47,7 @@ async def on_message(message):
         await channel.send(embed = chart)
     elif message.content.startswith('!Midgard'):
         print ('Midgard Vote Received')
-        userid = message.author.id
-        midgardVote = PollData(option='Midgard', poll=atlaspoll, user_id=userid)
+        midgardVote = PollData(option='Midgard', poll=atlaspoll)
         db.session.add(midgardVote)
         db.session.commit()
         channel = message.channel
