@@ -2,6 +2,7 @@
 
 A bot to poll on Discord and save the entries to a database. Currently developed only for the Atlas Discord server in preparation for their launch. Eventually I plan to make this scalable to create polls dynamically.
 
+**Make sure that you replace the number after channel.id == in the if statements to the channel you want to use it in**
 
 Instructions for running the code:
 
@@ -11,10 +12,9 @@ Instructions for running the code:
       python3 config.py (ONLY RUN THIS ONCE)
 4. Run:
       python3 main.py (leave this running, the bot will wait for input)
+5. Use the "!Count" command in the poll channel to initialize the poll.
 
 If you need to restart the bot, just run python3 main.py again, no need to run config.py again after initial db creation.
 
 
 This bot will lock the user out of the channel after they vote in order to prevent re-casting votes. It's the only way that I was able to accomplish this, because I was unable to store the user id reliably.
-
-**Make sure that you replace the number after channel.id == in the if statements to the channel you want to use it in**
